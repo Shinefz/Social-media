@@ -1,0 +1,19 @@
+<link rel="stylesheet" href="/css/user_profile.css">
+
+<img src="<%= user.avatar %>" alt="<%= user.name %>" width="100">
+
+<!-- For update the form -->
+<% if(user.id == profile_user.id) { %>
+    <form action="/users/update/<%= profile_user.id %>" enctype="multipart/form-data" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        
+        <!-- for image upload -->
+        <input type="file" name="avatar" placeholder="Profile Picture">
+        <input type="submit" value="update">
+    </form>
+<% }else{ %>
+    <!-- else dhow the profile info -->
+    <p><%= profile_user.name %></p>
+    <p><%= profile_user.email %></p>
+<% } %>
